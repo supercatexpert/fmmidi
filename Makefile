@@ -16,7 +16,7 @@ HAS_CURSES_H = yes
 # library flags for Curses library
 CURSES_LDFLAGS = -lncursesw
 
-CXXFLAGS = -I/usr/pkg/include -g -Wall
+CXXFLAGS = -I/usr/pkg/include -Wall -O2
 LDFLAGS = 
 
 # prefix to use when installing
