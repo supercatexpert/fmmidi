@@ -14,7 +14,7 @@ HAS_PTHREAD_H = yes
 # if this is set to yes, use Curses interface
 HAS_CURSES_H = yes
 # library flags for Curses library
-CURSES_LDFLAGS = -lcurses
+CURSES_LDFLAGS = -lncursesw
 
 CXXFLAGS = -I/usr/pkg/include -g -Wall
 LDFLAGS = 

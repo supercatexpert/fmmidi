@@ -22,8 +22,8 @@ int driver_id;
 #endif
 
 #ifdef FMMIDI_CURSES_H
-
-#include <curses.h>
+#include <locale.h>
+#include <ncurses.h>
 
 // never use clear() but wclear(stdscr) in fmmidi
 // some curses headers have a define for clear() that turns it 
@@ -916,6 +916,8 @@ int main(int argc, char *argv[])
 	seq = new midisequencer::sequencer();
 	
 	#ifdef FMMIDI_CURSES_H
+	setlocale(LC_ALL, "");
+	
 	if(cursesok)
 		cwin = initscr();
 	
