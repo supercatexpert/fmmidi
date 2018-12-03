@@ -1,0 +1,44 @@
+BUILDING FMMIDI
+--------
+
+Building fmmidi is easy. You just need to set the desired sound output method
+in the Makefile, by changing the SNDOUT variable at its beginning.
+No other dependencies beyond the C and C++ standard libraries and the ones
+require by the chosen sound output method are required.
+There are three sound methods available: libao, bsd and qnx
+
+The libao sound method outputs sound by using the libao audio library, which is
+a cross-platform library that talks with the native audio interfaces of several operating
+systems like Windows, Mac OS X, Linux, etc.
+Obviously in order to compile fmmidi for libao sound output you need to have libao
+and its headers already installed.
+Most probably this is the sound output method you will need to use.
+fmmidi also supports using libao's facilities to save the generated sound output to disk
+in the formats supported by the libao library installed in your system.
+
+The bsd sound method outputs sound by using the native audio interface in NetBSD.
+This sound method should also work on OpenBSD, but fmmidi has not been tested on
+that operating system.
+
+The qnx sound method outputs sound by using the native audio interface in QNX Neutrino
+
+Since 1.0.1, fmmidi can use the Unix signal handlers in order to provide
+features such as skipping a song if Ctrl-C is pressed.
+If your system does not support Unix signals, set HAS_SIGNAL_H to no in the 
+Makefile.
+
+To compile fmmidi, simply give the `make' command, or `gmake' on systems like
+*BSD.
+The makefile needs GNU Make.
+Install by doing `make install'.
+Cleaning the distribution works as usual, by doing `make clean'.
+
+fmmidi works both on little endian and big-endian processors.
+Real time playing at 44100Hz runs well on an Apple iMac with a 333Mhz PowerPC 
+processor. 
+This was tested by compiling fmmidi with gcc 4.9.2 and with the optimization 
+option -Ofast
+
+
+
+

@@ -1,0 +1,99 @@
+.Dd May 26, 2016
+.Dt FMMIDI 1
+.Os
+.Sh NAME
+.Nm fmmidi
+.Nd Play Standard MIDI music file(s) by emulating a Yamaha YM2608 FM synthesizer
+.Sh SYNOPSIS
+.Nm
+.Op Fl BL
+.Op Fl s Ar rate
+.Op Fl S Ar rate
+.Op Fl l Ar times
+.Op Fl D Ar driver
+.Op Fl o Ar file
+.Op Fl a Ar device
+.Op Fl V
+.Op Fl h
+.Op Ar files ...
+.Sh DESCRIPTION
+.Nm
+is a player for Standard MIDI music file(s). It emulates the Yamaha YM2608 FM synthesizer
+and it uses this emulation to play the musics in MIDI format.
+.Pp
+Many MIDI players since the late 1990s do not use (or emulate) FM synthesis and
+instead use prerecorded samples for instruments. These are called "wavetable" players.
+.Pp
+.Nm
+on the other hand, emulating FM synthesis, generates sound waves at real time.
+This makes music played using 
+.Nm
+sound more electronic compared to when it is played using wavetable players.
+.Pp
+.Nm
+implements the MIDI specification up to the Yamaha XG commands.
+.Sh OPTIONS
+.Bl -tag -width Ds
+.It Fl B
+Set mode where the player does not accept Yamaha XG commands.
+This feature is "broken" but the sound generated when in this mode
+may be of interest.
+.It Fl t
+Use the simple command line interface, even if Curses support is enabled.
+.It Fl L
+Loop the music forever.
+.It Fl s Ar rate
+.Ar rate 
+at which the sound output is generated. (default: 44100)
+.It Fl S Ar rate
+.Ar rate
+at which the sound output is played. When this option is not
+specified, this is equal to the rate at which the sound output
+is generated.
+.It Fl l Ar times
+Loop the music 
+.Ar times
+times.
+.It Fl D Ar driver
+(libao version only) Specify the libao 
+.Ar driver
+used to play the music.
+To display a list of available libao drivers, specify
+.Ar list
+as driver.
+.It Fl o Ar file
+(libao version only) Specify the file that will be used
+to store the sound data output. By default, the WAV format
+will be used, except when dumping to standard output (
+.Ql Fl
+) where sound data will be output raw.
+.It Fl a
+(bsdaudio and qnx versions only) Specify audio device 
+(bsdaudio default: /dev/audio, qnx default: 0:0)
+.It Fl V
+Display program version
+.It Fl h
+Display program help
+
+.Sh HISTORY
+The original program was written in C++ for Windows by yuno
+in 2004.
+.Pp
+A version for the Mac OS X operating system, along with
+a version converted to the Java programming language, followed some
+time later. All these versions used a graphical user interface.
+.Pp
+The source code for the Mac OS X version was obtained by nextvolume
+in early 2015 and a simple command line interface was developed by
+him around the core parts that composed the original
+.Nm
+program.
+.Sh BUGS
+The drum emulation is currently somewhat broken.
+.Sh AUTHORS
+nextvolume (Giuseppe Gatta) (tails92@gmail.com)
+.Pp
+yuno (Yoshio Uno) (yuno@users.sourceforge.jp)
+.Sh WEBPAGE
+http://unhaut.x10host.com/fmmidi
+
